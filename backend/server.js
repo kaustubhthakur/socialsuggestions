@@ -5,12 +5,14 @@ const cors = require('cors')
 const cookieparser = require('cookie-parser');
 const mongoose = require('mongoose')
 require('dotenv').config();
+const bodyparser = require('body-parser')
 const  authrouter = require('./routes/auth')
 const queryrouter = require('./routes/query')
 
 app.use(cors());
 app.use(express.json());
 app.use(cookieparser())
+app.use(bodyparser());
 
 
 const connection = async(req,res)=> {
