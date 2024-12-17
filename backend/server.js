@@ -9,10 +9,10 @@ const bodyparser = require('body-parser')
 const  authrouter = require('./routes/auth')
 const queryrouter = require('./routes/query')
 
-app.use(cors());
+app.use(cors({ origin: ["http://localhost:5173"], credentials: true }))
+
 app.use(express.json());
 app.use(cookieparser())
-app.use(bodyparser());
 
 
 const connection = async(req,res)=> {
