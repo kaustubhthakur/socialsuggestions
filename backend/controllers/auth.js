@@ -51,12 +51,13 @@ const login = async (req, res) => {
         console.log(error);
     }
 }
-const logout = async (req, res) => {
+const logout = (req, res) => {
     try {
-        res.cookie("jwt", "", { maxAge: 1 });
-		res.status(200).json({ message: "User logged out successfully" });
+      res.clearCookie("jwt");
+      res.status(200).json({ message: "User logged out successfully" });
     } catch (error) {
-        console.error(error);
+      console.log(error);
+      return res.status(500).json({ error: "Internal Server error" });
     }
-}
+  };
 module.exports = {register,login,logout};
