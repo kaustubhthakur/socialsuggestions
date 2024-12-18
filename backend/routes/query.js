@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const protectRoute = require('../utils/protectRoute')
-const {createQuery} = require('../controllers/queries')
-router.post('/',protectRoute,createQuery)
+const {createQuery,getQueries} = require('../controllers/queries')
+router.post('/create',protectRoute,createQuery)
+router.get('/',getQueries);
 module.exports = router;

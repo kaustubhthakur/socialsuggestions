@@ -22,4 +22,12 @@ res.status(201).json(savequery);
     }
 
 }
-module.exports = {createQuery}
+const getQueries = async(req,res)=> {
+    try {
+        const queries = await Query.find();
+        res.status(201).json(queries);
+    } catch (error) {
+        console.error(error);
+    }
+}
+module.exports = {createQuery,getQueries}

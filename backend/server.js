@@ -8,8 +8,8 @@ require('dotenv').config();
 const bodyparser = require('body-parser')
 const  authrouter = require('./routes/auth')
 const queryrouter = require('./routes/query')
-
-app.use(cors({ origin: ["http://localhost:5173"], credentials: true }))
+const userrouter = require('./routes/users')
+app.use(cors({credentials: true }))
 
 app.use(express.json());
 app.use(cookieparser())
@@ -26,6 +26,7 @@ const connection = async(req,res)=> {
 connection();
 app.use('/auth',authrouter)
 app.use('/query',queryrouter);
+app.use('/users',userrouter);
 app.listen(port,() => {
     console.log(`server is running on port ${port}`)
 })
